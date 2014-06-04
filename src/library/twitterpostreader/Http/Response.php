@@ -16,8 +16,14 @@ class Response {
 	 */
 	public function __construct($data){
 
+		if(isset(json_decode($data)->errors)){
+			$data = json_decode($data);
+			throw new \TwitterPostReader\TwitterPostReaderException($data->errors[0]->message);
+		}
+
 		foreach(json_decode($data) as $post){
 
+			// Populate the user
 			$u = new \TwitterPostReader\Properties\User();
 			$u->setId($post->user->id);
 			$u->setName($post->user->name);
@@ -25,6 +31,7 @@ class Response {
 			$u->setLocation($post->user->location);
 			$u->setDescription($post->user->description);
 
+			// Populate the post
 			$p = new \TwitterPostReader\Properties\Post();
 			$p->setId($post->id);
 			$p->setDate($post->created_at);

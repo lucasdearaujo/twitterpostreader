@@ -10,13 +10,13 @@ class Consumer {
 	 * The consumer key
 	 * @var string
 	 */
-	public $key;
+	private $key;
 
 	/**
 	 * The consumer secret
 	 * @var string
 	 */
-	public $secret;
+	private $secret;
 
 	/**
 	 * Set the consumer key
@@ -34,8 +34,21 @@ class Consumer {
 		return $this->key;
 	}
 
-	public function 
+	/**
+	 * Set the consumer secret
+	 * @param string $secret
+	 */
+	public function setSecret($secret){
+		$this->secret = $secret;
+	}
 
+	/**
+	 * Return the consumer secret.
+	 * @return string
+	 */
+	public function getSecret(){
+		return $this->secret;
+	}
 }
 
 ?>
