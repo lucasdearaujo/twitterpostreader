@@ -8,24 +8,16 @@
 class Request
 {
 	/**
-	 * Twitter consumer key for the REST API 1.1
-	 * @var string
+	 * Twitter consumer for the REST API 1.1
+	 * @var \TwitterPostReader\Consumer
 	 */
-	public $consumerKey;
-
-	/**
-	 * Twitter consumer secret for the REST API 1.1
-	 * @var string
-	 */
-	public $consumerSecret;
+	public $consumer;
 
 	/**
 	 * Configuration of the cURL request
 	 * @var array
 	 */
 	private $cURLConfig = array();
-
-	private $responseText;
 
 	/**
 	 * Get the twitter access token using the consumer
@@ -36,7 +28,7 @@ class Request
 
 		$options  = array(
 			CURLOPT_POSTFIELDS => array('grant_type' => 'client_credentials'),
-			CURLOPT_HTTPHEADER => array('Authorization: Basic ' . base64_encode($this->consumerKey . ':' . $this->consumerSecret)),
+			CURLOPT_HTTPHEADER => array('Authorization: Basic ' . base64_encode($this->consumer->getKey() . ':' . $this->consumer->getSecret())),
 			CURLOPT_HEADER => false,
 			CURLOPT_URL => 'https://api.twitter.com/oauth2/token',
 			CURLOPT_SSL_VERIFYPEER => false,

@@ -6,12 +6,11 @@ the lastest twitter statuses of a user in a very simple way.
 
 ```php
 $twitterPostReader = new \TwitterPostReader\TwitterPostReader();
-$twitterPostReader->consumerKey    = 'CONSUMER_KEY';
-$twitterPostReader->consumerSecret = 'CONSUMER_SECRET';
+$twitterPostReader->consumer = new \TwitterPostReader\Consumer();
+$twitterPostReader->consumer->setKey('CONSUMER_KEY');
+$twitterPostReader->consumer->setSecret('CONSUMER_SECRET');
 
-$posts = $twitterPostReader->getPosts('unimake', 3);
-
-foreach($posts as $post){
+foreach($twitterPostReader->getPosts('unimake', 3) as $post){
 	echo $post->text . '<br/>';
 }
 ```

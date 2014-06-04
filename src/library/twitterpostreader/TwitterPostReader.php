@@ -11,16 +11,10 @@ use TwitterPostReader\Http;
 class TwitterPostReader {
 
 	/**
-	 * Twitter consumer key for the REST API 1.1
-	 * @var string
+	 * Twitter consumer for the REST API 1.1
+	 * @var \TwitterPostReader\Consumer
 	 */
-	public $consumerKey;
-
-	/**
-	 * Twitter consumer secret for the REST API 1.1
-	 * @var string
-	 */
-	public $consumerSecret;
+	public $consumer;
 
 	/**
 	 * Get a number of posts from the user.
@@ -30,8 +24,7 @@ class TwitterPostReader {
 	public function getPosts($username, $count){
 
 		$request = new \TwitterPostReader\Http\Request();
-		$request->consumerKey = $this->consumerKey;
-		$request->consumerSecret = $this->consumerSecret;
+		$request->consumer = $this->consumer;
 		$request->configure($username, $count);
 
 		$response = new \TwitterPostReader\Http\Response($request->send());
