@@ -12,16 +12,9 @@ $twitterPostReader->consumer = new \TwitterPostReader\Consumer();
 $twitterPostReader->consumer->setKey('...');
 $twitterPostReader->consumer->setSecret('...');
 
+if(count($twitterPostReader->getPosts('unimake', 3)) == 3)
+	echo "Passed";
+else
+	echo "Error";
+
 ?>
-
-<html>
-	<head>
-		<meta charset="utf-8" />
-	</head>
-
-	<body>
-		<pre>
-			<?php var_dump($twitterPostReader->getPosts('unimake', 3)) ?>
-		</pre>
-	</body>
-</html>
