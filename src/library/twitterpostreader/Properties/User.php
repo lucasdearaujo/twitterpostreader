@@ -6,31 +6,31 @@ class User {
 	 * The user id
 	 * @var string
 	 */
-	public $id;
+	private $id;
 
 	/**
 	 * The user name
 	 * @var string
 	 */
-	public $name;
+	private $name;
 
 	/**
 	 * The user screen name
 	 * @var string
 	 */
-	public $screenName;
+	private $screenName;
 
 	/**
 	 * The user location
 	 * @var string
 	 */
-	public $location;
+	private $location;
 
 	/**
 	 * The user description
 	 * @var string
 	 */
-	public $description;
+	private $description;
 
 	/**
 	 * Set the user id
