@@ -8,15 +8,21 @@ the lastest twitter statuses of a user in a very simple way.
 
 ```php
 try {
-	$twitterPostReader = new \TwitterPostReader\TwitterPostReader();
-	$twitterPostReader->consumer = new \TwitterPostReader\Consumer();
-	$twitterPostReader->consumer->setKey('CONSUMER_KEY');
-	$twitterPostReader->consumer->setSecret('CONSUMER_SECRET');
 
-	foreach($twitterPostReader->getPosts('unimake', 3) as $post){
-		echo $post->text . '<br/>';
+	// Consumer configuration
+	$twitterConsumer = new \TwitterPostReader\Consumer();
+	$twitterConsumer->setKey('CONSUMER_KEY');
+	$twitterConsumer->setSecret('CONSUMER_SECRET');
+
+	// Get the 3 lastest posts from the user unimake
+	$twitterPostReader = new \TwitterPostReader\TwitterPostReader();
+	$userPosts = $twitterPostReader->getPosts('unimake', 3);
+
+	// Foreach them and show every property
+	foreach($userPosts as $post){
+		echo $post->getAuthor()->getScreenName() . ' : ' . $post->getText();
 	}
-}
+
 catch(\TwitterPostReader\TwitterPostReaderException $e){
 	echo "Ooops, do I have to report something at https://github.com/hamboldt/twitterpostreader/issues ?";
 }
