@@ -4,7 +4,7 @@ twitterpostreader
 This is a simple class made to be compatible with the new twitter rest API (1.1). Using it you can get
 the lastest twitter statuses of a user in a very simple way.
 
-```
+```php
 // Consumer configuration
 $twitterConsumer = new \TwitterPostReader\Consumer();
 $twitterConsumer->setKey('CONSUMER_KEY');
